@@ -1,5 +1,7 @@
 # Created with Blender 4.1.1 on 16/07/2024 by Samuel Badman.
 
+# Adds a copy location and copy rotation constraint to the selected bones. The added constraints target bones named the same as each bone in the selection with an added prefix to their name.
+
 # Steps to use script:
 # 1. Create the deformation skeleton for your rig.
 # 2. Create a copy of the deformation skeleton bones that will form the intermediate skeleton.

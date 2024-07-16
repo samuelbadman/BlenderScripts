@@ -1,0 +1,36 @@
+# Created with Blender 4.1.1 on 16/07/2024 by Samuel Badman.
+
+# Steps to use script:
+# 1. Create the deformation skeleton for your rig.
+# 2. Create a copy of the deformation skeleton bones that will form the intermediate skeleton.
+# 3. Name all new intermediate bones the same as their corresponding deformation bone with a chosen prefix. The default prefix used by the script is "Int_".
+# 4. Assign the value of intNamePrefix to your chosen intermediate bone prefix in the highlighted section of the script below.
+# 5. Enter pose mode of your armature and select all deformation bones.
+# 6. Create a new text data-block inside Blender and copy the contents of this file into it.
+# 7. Run the script.
+###############################################################################################################
+
+# Selected bones must be in pose mode
+# Deform bones and intermediate bones must be named the same with the intermediate bones containing a prefix (entered below)
+
+import bpy
+
+###############################################################################################################
+# Assign intermediate bone name prefix here. Change the value of Int_ to your intermediate bone name prefix.
+intNamePrefix = "Int_"
+###############################################################################################################
+
+selection = bpy.context.selected_pose_bones
+armature = bpy.context.active_object
+
+for bone in selection:
+    name = bone.name
+    subtargetName = intNamePrefix + name
+    
+    copyLocationConstraint = bpy.context.object.pose.bones[name].constraints.new("COPY_LOCATION")
+    copyLocationConstraint.target = armature
+    copyLocationConstraint.subtarget = subtargetName
+    
+    copyRotationConstraint = bpy.context.object.pose.bones[name].constraints.new("COPY_ROTATION")
+    copyRotationConstraint.target = armature
+    copyRotationConstraint.subtarget = subtargetName

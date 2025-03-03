@@ -6,7 +6,7 @@
 # Steps to use script:
 # 1. Create the deformation skeleton for your rig.
 # 2. Create a copy of the deformation skeleton bones that will form the intermediate skeleton.
-# 3. Name all new intermediate bones the same as their corresponding deformation bone with a chosen prefix. The default prefix used by the script is "Int_".
+# 3. Name all new intermediate bones the same as their corresponding deformation bone with a chosen prefix. The default prefix used by the script is "org_".
 # 4. Enter pose mode of your armature and select all deformation bones.
 # 5. Create a new text data-block inside Blender and copy the contents of this file into it.
 # 6. Assign the value of intNamePrefix to your chosen intermediate bone prefix in the highlighted section of the script below.
@@ -20,7 +20,7 @@ import bpy
 
 ###############################################################################################################
 # Assign intermediate bone name prefix here. Change the value of intNamePrefix to your intermediate bone name prefix.
-intNamePrefix = "Int_"
+intNamePrefix = "org_"
 ###############################################################################################################
 
 selection = bpy.context.selected_pose_bones
